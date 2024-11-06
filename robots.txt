@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /login/
+Disallow: /register/
+
+User-agent: Googlebot
+
+User-agent: Yandex
+
+Sitemap: https://www.pgib.ru/sitemap.xml
