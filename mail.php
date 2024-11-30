@@ -5,7 +5,7 @@ $mail->CharSet = 'utf-8';
 
 $name = $_POST['user_name'];
 $phone = $_POST['user_phone'];
-$email = $_POST['user_email'];
+// $email = $_POST['user_email'];
 
 $mail->SMTPDebug = 0; // Установите на 3 для отладки
 
@@ -22,7 +22,7 @@ $mail->addAddress('svvetek@yandex.ru');
 
 $mail->isHTML(true);
 $mail->Subject = 'Заявка на консультацию';
-$mail->Body    = "{$name} оставил заявку, его телефон {$phone}<br>Почта этого пользователя: {$email}";
+$mail->Body    = "{$name} оставил заявку, его телефон {$phone}";
 
 if (!$mail->send()) {
     echo json_encode(['success' => false, 'message' => $mail->ErrorInfo]);

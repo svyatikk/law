@@ -1,35 +1,33 @@
-setTimeout(function () {
-    let overlay = document.getElementById('overlay');
+function openModal() {
     let modalwin = document.getElementById('modal-content');
+    
+    modalwin.style.display = "block"; 
 
-    overlay.style.display = "block"; // Показывает затемнение
-    modalwin.style.display = "block"; // Показывает окно
 
-    // Используем setTimeout для плавного появления
     setTimeout(() => {
-        overlay.style.opacity = "1"; // Устанавливаем непрозрачность
-        modalwin.style.opacity = "1"; // Устанавливаем непрозрачность
-    }, 100); // Небольшая задержка для активации перехода
-}, 1000); // Открытие через 10 секунд
+        modalwin.style.opacity = "1"; 
+    }, 100); 
+}
+
+openModal()
+
+
+document.getElementById("openModalButton").addEventListener("click", openModal);
 
 document.getElementById("modal-close").addEventListener("click", function () {
-    let overlay = document.getElementById('overlay');
     let modalwin = document.getElementById('modal-content');
 
-    overlay.style.opacity = "0"; // Уменьшаем непрозрачность
-    modalwin.style.opacity = "0"; // Уменьшаем непрозрачность
+    modalwin.style.opacity = "0"; 
 
-    // Скрываем элементы после завершения анимации
+    
     setTimeout(() => {
-        overlay.style.display = "none"; // Скрывает затемнение
-        modalwin.style.display = "none"; // Скрывает окно
-    }, 500); // Задержка должна совпадать с длительностью перехода
+        modalwin.style.display = "none"; 
+    }, 500); 
 });
 
 document.getElementById("contactForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Предотвращаем стандартное поведение формы
-
-    let formData = new FormData(this); // Собираем данные формы
+    event.preventDefault(); 
+    let formData = new FormData(this); 
     let successMessage = document.getElementById('successMessage');
 
     fetch('mail.php', {
@@ -39,16 +37,16 @@ document.getElementById("contactForm").addEventListener("submit", function (even
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                successMessage.textContent = data.message; // Успешное сообщение
-                successMessage.style.display = "block"; // Показываем сообщение
-                this.reset(); // Очищаем форму
+                successMessage.textContent = data.message; 
+                successMessage.style.display = "block"; 
+                this.reset(); 
             } else {
-                successMessage.textContent = "Ошибка: " + data.message; // Сообщение об ошибке
-                successMessage.style.display = "block"; // Показываем сообщение
+                successMessage.textContent = "Ошибка: " + data.message; 
+                successMessage.style.display = "block"; 
             }
         })
         .catch(error => {
-            successMessage.textContent = "Ошибка: " + error.message; // Сообщение об ошибке
-            successMessage.style.display = "block"; // Показываем сообщение
+            successMessage.textContent = "Ошибка: " + error.message;
+            successMessage.style.display = "block"; 
         });
 });

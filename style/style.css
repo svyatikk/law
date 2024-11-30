@@ -29,7 +29,7 @@ body {
 
 .header {
     position: sticky;
-    z-index: 10;
+    z-index: 100;
     width: 100%;
     left: 0;
     top: 0;
@@ -487,23 +487,46 @@ body {
 .modal-menu {
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 99;
     background: var(--background-color);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 20px;
+    right: 20px;
     width: calc(100% - 40px);
-    /* Уменьшаем ширину на 40px (по 20px с каждой стороны) */
-    max-width: 500px;
+    max-width: 400px;
     border-radius: 8px;
     border: 1px solid var(--main-color);
     opacity: 0;
     transition: opacity 0.5s ease;
     padding: 20px;
-    /* Внутренние отступы */
+}
+
+.open-modal-button {
+    padding: 10px 20px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 98;
+    transition: .2s;
+
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: calc(100% - 40px);
+    max-width: 100px;
+
+    img {
+        width: 100px;
+    }
+}
+
+.open-modal-button:hover {
+    background-color: var(--second-color);
 }
 
 .modal-close {
+    font-size: 18px;
     color: var(--main-color);
     transition: .2s;
 }
@@ -511,6 +534,16 @@ body {
 .modal-close:hover {
     color: var(--second-color);
     text-decoration: underline;
+}
+
+.icon {
+    width: 50px;
+    transition: fill-color .3s ease;
+}
+
+.open-modal-button:hover .icon path {
+    fill: var(--main-color);
+    /* Change to your desired hover color */
 }
 
 .card {
@@ -542,7 +575,7 @@ body {
     left: 10%;
     top: 15%;
     right: 10%;
-    font-size: 28px;
+    font-size: 20px;
     /* 1.75rem = 28px */
     font-weight: 700;
     color: var(--background-color);
@@ -570,6 +603,7 @@ body {
 }
 
 .input-label {
+    font-size: 17px;
     color: var(--main-color);
     position: absolute;
     top: 24px;
@@ -607,7 +641,7 @@ body {
 }
 
 .action-button {
-    font-size: 20px;
+    font-size: 18px;
     padding: 10px;
     width: 100%;
     font-weight: 500;
@@ -631,7 +665,7 @@ body {
     padding: 16px;
     /* Увеличиваем отступ до пикселей (1rem = ~16px) */
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     /* .875rem = ~14px */
     color: var(--main-color);
 
@@ -763,10 +797,20 @@ body {
         font-size: 12px;
     }
 
+    .footer {
+        padding: 20px 10px;
+    }
 }
 
 @media only screen and (max-width:500px) {
+
     .contact-holder {
         flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width:415px) {
+    .card-heading {
+        font-size: 17px;
     }
 }
